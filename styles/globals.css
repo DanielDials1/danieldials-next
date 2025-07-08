@@ -1,0 +1,347 @@
+/* styles/globals.css */
+
+/* ----------------------------
+   Base Page Styles
+---------------------------- */
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #222;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.navbar,
+.dropdown-menu {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ----------------------------
+   Navbar Styling
+---------------------------- */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  transition: max-height 0.4s ease;
+  max-height: 50px;
+}
+
+.navbar-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 50px;
+  flex-shrink: 0;
+  gap: 2px;
+  padding-left: 30px;
+}
+
+.navbar.expanded {
+  padding-bottom: 40px;
+  max-height: 370px;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 0;
+  display: block;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #4b4b4b;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: background 0.2s;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  background-color: transparent;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #444;
+  transition: color 0.2s, background 0.2s;
+}
+
+.icon-btn:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.icon-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ----------------------------
+   Dropdown Menu
+---------------------------- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 20px 0 60px 0;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  transform: scale(1.4);
+  transform-origin: top left;
+}
+
+.dropdown-menu.open {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.dropdown-menu li {
+  padding: 5px 15px;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
+  background-color: transparent;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.dropdown-menu li a:hover {
+  background-color: transparent;
+}
+
+.dropdown-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-heading {
+  font-size: 0.75rem;
+  color: #888888;
+  margin-bottom: 0.5rem;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.dropdown-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.dropdown-link.main {
+  font-size: 1rem;
+  color: #333333;
+  font-weight: 500;
+}
+
+.dropdown-link.sub {
+  font-size: 0.75rem;
+  color: #555555;
+  margin-bottom: 0.2rem;
+}
+
+/* ----------------------------
+   Page Blur Overlay
+---------------------------- */
+.page-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.page-blur.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ----------------------------
+   Hero Section
+---------------------------- */
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: 70vh;
+  overflow: hidden;
+  background-image: url("/img/DanielDialsRT.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-bg {
+  position: absolute;
+  top: -4px;
+  left: calc(50% - (100vw + 8px)/2);
+  width: calc(100vw + 8px);
+  height: calc(100% + 8px);
+  object-fit: cover;
+  filter: blur(4px) brightness(0.6);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.search-btn {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-btn .icon-search {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.search-btn:hover .icon-search {
+  color: #000;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3.5rem;
+  font-size: 1.25rem;
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: 6px;
+  background: white;
+  color: #222;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+main {
+  text-align: center;
+  padding: 0 20px 60px;
+}
+
+section.hero + * {
+  padding-top: 20px;
+}
+
+/* ----------------------------
+   aSlot Section
+---------------------------- */
+.aSlot {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.aSlot-image {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.aSlot-image::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("/img/ShackMus.PNG") center/cover no-repeat;
+  filter: blur(4px) brightness(0.6);
+  z-index: 0;
+}
+
+.aSlot-text {
+  position: absolute;
+  top: 50%; left: 1rem;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: white;
+  max-width: 80%;
+}
+
+.aSlot-text h2 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.aSlot-empty {
+  /* placeholder */
+}
