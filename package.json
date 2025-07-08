@@ -1,26 +1,20 @@
 {
   "name": "danieldials-next",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "engines": {
-      "node": "18.x"
-    },
-  "private": true,
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
-    "build:static": "npm run build && npm run export",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.5"
+    "next": "15.3.5",
+    "react": "18.x",
+    "react-dom": "18.x"
   },
   "devDependencies": {
-    "eslint": "^9",
-    "eslint-config-next": "15.3.5",
-    "@eslint/eslintrc": "^3"
+    "@11ty/eleventy": "^3.1.2"
   }
 }
