@@ -32,7 +32,7 @@ body {
   padding: 0 20px;
   overflow: hidden;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-  transition: max-height 0.4s ease;
+  transition: max-height 0.4s ease, padding-bottom 0.4s ease;
   max-height: 50px;
 }
 
@@ -115,9 +115,12 @@ body {
 }
 
 .dropdown-menu {
-  max-height: 0;
-  overflow: hidden;
+  /* start fully collapsed via scaleY */
+  transform: scale(1.4) scaleY(0);
+  transform-origin: top left;
   opacity: 0;
+  visibility: hidden;
+
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -126,14 +129,16 @@ body {
   width: 100%;
   list-style: none;
   margin: 0;
-  transition: max-height 0.35s ease, opacity 0.3s ease;
-  transform: scale(1.4);
-  transform-origin: top left;
+
+  /* animate transform and fade together */
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .dropdown-menu.open {
-  max-height: 300px;
+  /* full size (scaleY=1), fully opaque */
+  transform: scale(1.4) scaleY(1);
   opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-menu li {
