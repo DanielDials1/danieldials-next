@@ -362,3 +362,9 @@ section.hero + * {
   margin-bottom: 0;       /* no extra margins */
   padding: 2px 15px;      /* tighter top/bottom padding */
 }
+
+/* snap‐closed when we’re navigating away */
+#navbar.no-transition,
+#dropdown-menu.no-transition {
+  transition: none !important;
+}

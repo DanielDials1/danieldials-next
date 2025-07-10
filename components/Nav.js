@@ -1,5 +1,6 @@
 // components/Nav.js
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 /* ─── helper to render each two-column menu ─── */
@@ -36,25 +37,69 @@ function MenuColumns({ heading, mains, subs }) {
 
 
 export default function Nav() {
+  const router = useRouter()
   // what content to show
   const [activeMenu, setActiveMenu]   = useState(null)
   // whether the panel is visually open or closed
   const [isExpanded, setIsExpanded] = useState(false)
 
   const hideTimeout = useRef(null)
+  const showTimeout  = useRef(null)
 
-  const showMenu = (key) => {
-    clearTimeout(hideTimeout.current)    // cancel any pending unmount
-    setActiveMenu(key)                   // pick which column to render
-    setIsExpanded(true)                  // slide the panel open
-  }
-  const hideMenu = () => {
-    setIsExpanded(false)                 // begin CSS collapse right away
-    // only _after_ 400ms (your CSS’s collapse duration) do we unmount
-    hideTimeout.current = setTimeout(() => {
-      setActiveMenu(null)
-    }, 400)
-  }
+      // snap-close (no animation) on page nav, then restore transitions
+      useEffect(() => {
+        const handleRouteChangeStart = () => {
+          clearTimeout(showTimeout.current)
+          clearTimeout(hideTimeout.current)
+    
+          // disable transitions inline
+          const navEl = document.getElementById('navbar')
+          const ddEl  = document.getElementById('dropdown-menu')
+          if (navEl) navEl.style.setProperty('transition', 'none', 'important')
+          if (ddEl)  ddEl.style.setProperty('transition', 'none', 'important')
+    
+          setIsExpanded(false)
+          setActiveMenu(null)
+        }
+        const handleRouteChangeComplete = () => {
+            // restore transitions by removing our inline override
+          const navEl = document.getElementById('navbar')
+          const ddEl  = document.getElementById('dropdown-menu')
+          if (navEl) navEl.style.removeProperty('transition')
+          if (ddEl)  ddEl.style.removeProperty('transition')
+        }
+    
+        router.events.on('routeChangeStart',    handleRouteChangeStart)
+        router.events.on('routeChangeComplete', handleRouteChangeComplete)
+        return () => {
+          router.events.off('routeChangeStart',    handleRouteChangeStart)
+          router.events.off('routeChangeComplete', handleRouteChangeComplete)
+        }
+      }, [router.events])
+
+     const showMenu = (key) => {
+       // cancel any pending show or hide
+       clearTimeout(showTimeout.current)
+       clearTimeout(hideTimeout.current)
+    
+       // wait .2s before actually opening/swapping
+       showTimeout.current = setTimeout(() => {
+         setActiveMenu(key)
+         setIsExpanded(true)
+       }, 200)
+     }
+     const hideMenu = () => {
+       // cancel any pending opening
+       clearTimeout(showTimeout.current)
+    
+      // collapse immediately
+       setIsExpanded(false)
+
+       // after your 0.4s CSS collapse finishes, unmount
+       hideTimeout.current = setTimeout(() => {
+         setActiveMenu(null)
+       }, 400)
+     }
   // exactly the same as your old `expanded`
   const expanded = isExpanded
 
