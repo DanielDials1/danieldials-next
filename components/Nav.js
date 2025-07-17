@@ -116,38 +116,17 @@ export default function Nav() {
           </Link>
 
           <ul className="nav-links">
-            <li
-              id="dropdown-trigger"
-              className="dropdown"
-              onMouseEnter={() => showMenu('producers')}
-            >
-              <Link href="/producers" className="nav-item">
-                Producers
-              </Link>
+            <li className="dropdown" onMouseEnter={() => showMenu('producers')}>
+              <Link href="/producers" className="nav-item">Producers</Link>
             </li>
-            <li
-              className="dropdown"
-              onMouseEnter={() => showMenu('genres')}
-            >
-              <Link href="/genres">Genres</Link>
+            <li className="dropdown" onMouseEnter={() => showMenu('artists')}>
+              <Link href="/artists" className="nav-item">Artists</Link>
             </li>
-            <li
-              className="dropdown"
-              onMouseEnter={() => showMenu('genre2')}
-            >
-              <Link href="/genre2">Genre 2</Link>
+            <li className="dropdown" onMouseEnter={() => showMenu('genres')}>
+              <Link href="/genres" className="nav-item">Genres</Link>
             </li>
-            <li
-              className="dropdown"
-              onMouseEnter={() => showMenu('genre3')}
-            >
-              <Link href="/genre3">Genre 3</Link>
-            </li>
-            <li
-              className="dropdown"
-              onMouseEnter={() => showMenu('genre4')}
-            >
-              <Link href="/genre4">Genre 4</Link>
+            <li className="dropdown" onMouseEnter={() => showMenu('support')}>
+              <Link href="/support" className="nav-item">Support</Link>
             </li>
           </ul>
 
@@ -183,96 +162,66 @@ export default function Nav() {
             id="dropdown-menu"
             className={`dropdown-menu ${expanded ? 'open' : ''}`}
             >
-          {activeMenu === 'producers' && (
+            {activeMenu === 'producers' && (
             <MenuColumns
-            heading="prods"
-            mains={[
+              heading="prods"
+              mains={[
                 { label: 'DanielDials', href: '/DanielDials-Prod' },
                 { label: 'Elevate.',    href: '/Elevate-Prod'  },
-            ]}
-                subs={[
-                { label: 'Filler1', href: '/filler1' },
-                { label: 'Filler2', href: '/filler2' },
-                { label: 'Filler3', href: '/filler3' },
-                { label: 'Filler4', href: '/filler4' },
+              ]}
+              subs={[
+                { label: 'Sample Submissions', href: '/sample-submissions' },
+                { label: 'Apply',              href: '/apply'              },
+              ]}
+            />
+            )}
+            {activeMenu === 'artists' && (
+              <MenuColumns
+                heading="artists"
+                mains={[
+                  { label: 'Artist A', href: '/artist-a' },
+                  { label: 'Artist B', href: '/artist-b' },
                 ]}
-            />
-          )}
+                subs={[
+                  { label: 'Band X', href: '/band-x' },
+                  { label: 'Band Y', href: '/band-y' },
+                ]}
+              />
+            )}
+            {activeMenu === 'genres' && (
+              <MenuColumns
+                heading="genres"
+                mains={[
+                  { label: 'Trap',    href: '/trap'    },
+                  { label: 'Hip-Hop', href: '/hip-hop' },
+                  { label: 'RnB',     href: '/rnb'     },
+                ]}
+                subs={[
+                  { label: 'SubA', href: '/suba' },
+                  { label: 'SubB', href: '/subb' },
+                ]}
+              />
+            )}
+            {activeMenu === 'support' && (
+              <MenuColumns
+                heading="support"
+                mains={[
+                  { label: 'Contact', href: '/contact' },
+                  { label: 'FAQ',     href: '/faq'     },
+                ]}
+                subs={[
+                  { label: 'Help',     href: '/help'     },
+                  { label: 'Feedback', href: '/feedback' },
+                ]}
+              />
+            )}
+                </ul>
+              </nav>
 
-          {activeMenu === 'genres' && (
-            <MenuColumns
-              heading="genres"
-            mains={[
-                { label: 'Trap',    href: '/trap'    },
-                { label: 'Hip-Hop', href: '/hip-hop' },
-                { label: 'RnB',     href: '/rnb'     },
-            ]}
-            subs={[
-                { label: 'FillerA', href: '/fillera' },
-                { label: 'FillerB', href: '/fillerb' },
-                { label: 'FillerC', href: '/fillerc' },
-                { label: 'FillerD', href: '/fillerd' },
-            ]}
-            />
-          )}
-
-          {activeMenu === 'genre2' && (
-            <MenuColumns
-              heading="genre2"
-            mains={[
-                { label: 'Trap',    href: '/trap'    },
-                { label: 'Hip-Hop', href: '/hip-hop' },
-                { label: 'RnB',     href: '/rnb'     },
-            ]}
-            subs={[
-                { label: 'FillerA', href: '/fillera' },
-                { label: 'FillerB', href: '/fillerb' },
-                { label: 'FillerC', href: '/fillerc' },
-                { label: 'FillerD', href: '/fillerd' },
-            ]}
-            />
-          )}
-
-          {activeMenu === 'genre3' && (
-            <MenuColumns
-              heading="genre3"
-            mains={[
-                { label: 'Trap',    href: '/trap'    },
-                { label: 'Hip-Hop', href: '/hip-hop' },
-                { label: 'RnB',     href: '/rnb'     },
-            ]}
-            subs={[
-                { label: 'FillerA', href: '/fillera' },
-                { label: 'FillerB', href: '/fillerb' },
-                { label: 'FillerC', href: '/fillerc' },
-                { label: 'FillerD', href: '/fillerd' },
-            ]}
-            />
-          )}
-
-          {activeMenu === 'genre4' && (
-            <MenuColumns
-              heading="genre4"
-            mains={[
-                { label: 'Trap',    href: '/trap'    },
-                { label: 'Hip-Hop', href: '/hip-hop' },
-                { label: 'RnB',     href: '/rnb'     },
-            ]}
-            subs={[
-                { label: 'FillerA', href: '/fillera' },
-                { label: 'FillerB', href: '/fillerb' },
-                { label: 'FillerC', href: '/fillerc' },
-                { label: 'FillerD', href: '/fillerd' },
-            ]}
-            />
-          )}
-        </ul>
-      </nav>
-
-      <div
-        id="page-blur"
-        className={`page-blur ${expanded ? 'active' : ''}`}
-      />
-    </>
-  )
+              <div
+                id="page-blur"
+                className={`page-blur ${expanded ? 'active' : ''}`}
+              />
+            </>
+          )
 }
