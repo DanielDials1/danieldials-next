@@ -45,6 +45,7 @@ export default function Nav() {
 
   const hideTimeout = useRef(null)
   const showTimeout  = useRef(null)
+  const showDelay = 200            // wait 200 ms before switching/opening
 
       // snap-close (no animation) on page nav, then restore transitions
       useEffect(() => {
@@ -86,7 +87,7 @@ export default function Nav() {
        showTimeout.current = setTimeout(() => {
          setActiveMenu(key)
          setIsExpanded(true)
-       }, 200)
+       }, showDelay)
      }
      const hideMenu = () => {
        // cancel any pending opening
@@ -116,16 +117,16 @@ export default function Nav() {
           </Link>
 
           <ul className="nav-links">
-            <li className="dropdown" onMouseEnter={() => showMenu('producers')}>
+            <li className="dropdown" onMouseEnter={() => showMenu('producers')} onMouseLeave={() => clearTimeout(showTimeout.current)}>
               <Link href="/producers" className="nav-item">Producers</Link>
             </li>
-            <li className="dropdown" onMouseEnter={() => showMenu('artists')}>
+            <li className="dropdown" onMouseEnter={() => showMenu('artists')} onMouseLeave={() => clearTimeout(showTimeout.current)}>
               <Link href="/artists" className="nav-item">Artists</Link>
             </li>
-            <li className="dropdown" onMouseEnter={() => showMenu('genres')}>
+            <li className="dropdown" onMouseEnter={() => showMenu('genres')} onMouseLeave={() => clearTimeout(showTimeout.current)}>
               <Link href="/genres" className="nav-item">Genres</Link>
             </li>
-            <li className="dropdown" onMouseEnter={() => showMenu('support')}>
+            <li className="dropdown" onMouseEnter={() => showMenu('support')} onMouseLeave={() => clearTimeout(showTimeout.current)}>
               <Link href="/support" className="nav-item">Support</Link>
             </li>
           </ul>

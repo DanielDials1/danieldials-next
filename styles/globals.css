@@ -142,6 +142,16 @@ body {
   visibility: visible;
 }
 
+.dropdown-menu a.dropdown-link.sub[href="/sample-submissions"] {
+  color: #FFC107 !important;
+  font-weight: bold;
+}
+
+/* Make “Apply” lime green and bold */
+.dropdown-menu a.dropdown-link.sub[href="/apply"] {
+  color: #00bb00;
+}
+
 .dropdown-menu li {
   padding: 2px 15px; 
 }
@@ -189,6 +199,10 @@ body {
   font-size: 0.65rem;
   color: #444444 ; 
   margin-bottom: 0.1rem ; 
+}
+
+.dropdown-menu .dropdown-col:first-child .dropdown-link.main:first-of-type {
+  padding-top: 2px !important;
 }
 
 /* ----------------------------
@@ -370,3 +384,42 @@ section.hero + * {
   transition: none !important;
 }
 
+
+/* Smaller upside-down triangular exclamation marks on DanielDials */
+/*
+.dropdown-menu a.dropdown-link.main[href="/DanielDials-Prod"] {
+  position: relative; 
+}
+
+.dropdown-menu a.dropdown-link.main[href="/DanielDials-Prod"]::before,
+.dropdown-menu a.dropdown-link.main[href="/DanielDials-Prod"]::after {
+  content: "";
+  position: absolute;
+  width: 16px; 
+  height: 32px;  
+  background: url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='16' height='32'>\
+      <!-- upside-down triangle: base at top, apex at bottom -->\
+      <polygon points='0,0 16,0 8,24' fill='%23FF0000'/>\
+      <!-- circular dot below -->\
+      <circle cx='8' cy='28' r='3' fill='%23FF0000'/>\
+    </svg>\
+  ") no-repeat center top;
+  pointer-events: none;
+  user-select: none;
+}
+
+// top-left corner
+.dropdown-menu a.dropdown-link.main[href="/DanielDials-Prod"]::before {
+  top: 6px;   
+  left: -8px;    
+  transform: rotate(-25deg);
+}
+
+// top-right corner
+.dropdown-menu a.dropdown-link.main[href="/DanielDials-Prod"]::after {
+  top: 6px;
+  right: -8px;
+  transform: rotate(25deg);
+}
+*/

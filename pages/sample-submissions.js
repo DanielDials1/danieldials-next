@@ -1,7 +1,7 @@
 // pages/sample-submissions.js
 import Head from 'next/head'
 
-export default function Producers() {
+export default function samplesubmissions() {
   return (
     <>
       <Head>
