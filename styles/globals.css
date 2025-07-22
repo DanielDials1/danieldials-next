@@ -1,5 +1,8 @@
 /* styles/globals.css */
-
+html {
+  /* reserve space for a scrollbar when needed */
+  scrollbar-gutter: stable;
+}
 
 /* ----------------------------
    Base Page Styles
@@ -145,12 +148,15 @@ body {
 .dropdown-menu a.dropdown-link.sub[href="/sample-submissions"] {
   color: #FFC107 !important;
   font-weight: bold;
+
 }
 
 /* Make “Apply” lime green and bold */
 .dropdown-menu a.dropdown-link.sub[href="/apply"] {
   color: #00bb00;
 }
+
+
 
 .dropdown-menu li {
   padding: 2px 15px; 
@@ -383,6 +389,21 @@ section.hero + * {
 #dropdown-menu.no-transition {
   transition: none !important;
 }
+
+/* make the navbar‐top a positioning context */
+.navbar-top {
+  position: relative;
+  justify-content: center;  /* keep logo+links centered */
+}
+
+/* absolutely pin the icons on the right */
+.nav-icons {
+  position: absolute;
+  top: 50%;
+  right: 20px;              /* match your navbar padding */
+  transform: translateY(-50%);
+}
+
 
 
 /* Smaller upside-down triangular exclamation marks on DanielDials */

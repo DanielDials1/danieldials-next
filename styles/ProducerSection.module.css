@@ -1,0 +1,32 @@
+/* Panel container with background color */
+.section {
+  position: relative;
+  width: 50vw;            /* half viewport width */
+  height: 200px;          /* panel height */
+  margin: 2rem 0 1rem;    /* gap before first and between panels */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Align panels flush to left or right edge */
+.left {
+  margin-left: 0;
+}
+.right {
+  margin-left: auto;
+}
+
+/* Foreground content */
+.content {
+  position: relative;
+  z-index: 1;
+  color: #000;            /* dark text on light background */
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.content h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
