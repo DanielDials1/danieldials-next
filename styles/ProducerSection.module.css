@@ -1,5 +1,6 @@
-/* Panel container with background color */
+/* Panel container with hover expand */
 .section {
+  background-color: #2c2c2c;
   position: relative;
   width: 50vw;            /* half viewport width */
   height: 200px;          /* panel height */
@@ -7,21 +8,29 @@
   overflow: hidden;
   display: flex;
   align-items: center;
+  transition: transform 0.2s ease; /* smooth expand */
 }
 
-/* Align panels flush to left or right edge */
 .left {
-  margin-left: 0;
-}
-.right {
-  margin-left: auto;
+  margin-left: 0;               /* flush to left edge */
+  transform-origin: left center; /* expand to right */
 }
 
-/* Foreground content */
+.right {
+  margin-left: auto;            /* flush to right edge */
+  transform-origin: right center;/* expand to left */
+}
+
+/* Hover expands opposite of flush side */
+.section:hover {
+  transform: scaleX(1.02);      /* expand width by 2% */
+}
+
 .content {
+  color: #fff;
   position: relative;
   z-index: 1;
-  color: #000;            /* dark text on light background */
+  color: #000;                   /* dark text on light background */
   padding: 1rem;
   font-weight: 600;
 }
